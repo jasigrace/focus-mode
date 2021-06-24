@@ -1,0 +1,281 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<style>
+			body {
+			  margin: 0;
+			  min-width: 250px;
+			}
+
+			/* Include the padding and border in an element's total width and height */
+			* {
+			  box-sizing: border-box;
+			}
+
+			/* Remove margins and padding from the list */
+			ul {
+			  margin: 0;
+			  padding: 0;
+			}
+
+			/* Style the list items */
+			ul li {
+			  color: #F6DB2D;
+			  cursor: pointer;
+			  position: relative;
+			  padding: 12px 8px 12px 40px;
+			  list-style-type: none;
+			  background: black;
+			  font-size: 25px;
+			  transition: 0.2s;
+			  border-radius: 10px;
+			  margin: 10px;
+
+			  /* make the list items unselectable */
+			  -webkit-user-select: none;
+			  -moz-user-select: none;
+			  -ms-user-select: none;
+			  user-select: none;
+			}
+
+			/* Set all odd list items to a different color (zebra-stripes) */
+
+			ul li:nth-child(odd) {
+			  background: #F6DB2D;
+			  color: black;
+			}
+			/* Darker background-color on hover */
+			ul li:hover {
+			  background: black;
+			  color: #F6DB2D;
+			}
+
+			/* When clicked on, add a background color and strike out text */
+			ul li.checked {
+			  background: #F7E86C;
+			  color: #fff;
+			  text-decoration: line-through;
+			}
+
+			/* Add a "checked" mark when clicked on */
+			ul li.checked::before {
+			  position: absolute;
+			  border-color: #fff;
+			  border-style: solid;
+			  border-width: 0 2px 2px 0;
+			  top: 10px;
+			  left: 16px;
+			  transform: rotate(45deg);
+			  height: 15px;
+			  width: 7px;
+			}
+
+			/* Style the close button */
+			.close {
+			  position: absolute;
+			  right: 0;
+			  top: 0;
+			  padding: 12px 16px 12px 16px;
+			}
+
+			.close:hover {
+			  background-color: #F6DB2D;
+			  color: white;
+			}
+
+			/* Style the header */
+			.header {
+			  padding: 30px 40px;
+			  color: white;
+			  text-align: center;
+			}
+
+			/* Clear floats after the header */
+			.header:after {
+			  content: "";
+			  display: table;
+			  clear: both;
+			}
+
+			/* Style the input */
+			input {
+			  margin: 0;
+			  border: 2px solid #F6DB2D;
+			  border-radius: 10px;
+			  width: 70%;
+			  padding: 10px;
+			  float: left;
+			  font-size: 16px;
+			}
+
+			/* Style the "Add" button */
+			.addBtn {
+			  padding: 10px;
+			  width: 20%;
+			  background: black;
+			  color: #F6DB2D;
+			  float: left;
+			  text-align: center;
+			  font-size: 25px;
+			  cursor: pointer;
+			  transition: 0.3s;
+			  border-radius: 10px;
+			  margin:0px 5px;
+			}
+
+			.addBtn:hover {
+			  color: black;
+			  background-color: #F6DB2D;
+			}
+		</style>
+		<title>Tasks</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="static/assets_tasks/css/main.css" />
+		<noscript><link rel="stylesheet" href="static/assets_tasks/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper-->
+			<div id="wrapper">
+
+				<!-- Nav -->
+					<nav id="nav">
+						<a href="#" class="icon solid fa-home"><span>Home</span></a>
+						<a href="#work" class="icon solid fa-tasks"><span>Tasks</span></a>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Me -->
+							<article id="home" class="panel intro">
+								<header>
+									<h1>Daily Tasks</h1>
+									<p>My Time Table, My Routine</p>
+								</header>
+								<a href="#work" class="jumplink pic">
+									<span class="arrow icon solid fa-chevron-right"><span>See my work</span></span>
+									<img src="https://media3.giphy.com/media/26BRAgG6hFYr50tO0/giphy.gif?cid=ecf05e47lwt4p7nt52mhtvnqzcgr0vupp0zwf3gq1e3ifmwy&rid=giphy.gif&ct=g" alt="" />
+								</a>
+							</article>
+
+						<!-- Work -->
+							<article id="work" class="panel">
+
+								<section>
+									<div id="myDIV" class="header">
+  <input type="text" id="myInput" >
+  <span onclick="newElement()" class="addBtn">+</span>
+</div>
+
+<ul id="myUL">
+  <li>Hit the gym</li>
+  <li>Internship</li>
+  <li>Python</li>
+  <li>News Paper</li>
+  <li>Read a book</li>
+  <li>Games</li>
+</ul>
+								</section>
+							</article>
+
+						<!-- Contact -->
+							<article id="contact" class="panel">
+								<header>
+									<h2>Contact Me</h2>
+								</header>
+								<form action="#" method="post">
+									<div>
+										<div class="row">
+											<div class="col-6 col-12-medium">
+												<input type="text" name="name" placeholder="Name" />
+											</div>
+											<div class="col-6 col-12-medium">
+												<input type="text" name="email" placeholder="Email" />
+											</div>
+											<div class="col-12">
+												<input type="text" name="subject" placeholder="Subject" />
+											</div>
+											<div class="col-12">
+												<textarea name="message" placeholder="Message" rows="6"></textarea>
+											</div>
+											<div class="col-12">
+												<input type="submit" value="Send Message" />
+											</div>
+										</div>
+									</div>
+								</form>
+							</article>
+
+					</div>
+			</div>
+
+		<!-- Scripts -->
+		<script>
+// Create a "close" button and append it to each list item
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
+
+// Click on a close button to hide the current list item
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+
+// Add a "checked" symbol when clicking on a list item
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+// Create a new list item when clicking on the "Add" button
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
+</script>
+
+			<script src="static/assets_tasks/js/jquery.min.js"></script>
+			<script src="static/assets_tasks/js/browser.min.js"></script>
+			<script src="static/assets_tasks/js/breakpoints.min.js"></script>
+			<script src="static/assets_tasks/js/util.js"></script>
+			<script src="static/assets_tasks/js/main.js"></script>
+
+	</body>
+</html>

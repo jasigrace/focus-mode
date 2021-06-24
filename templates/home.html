@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<style>
+			body {
+    			background: #202020;
+    			color: white;
+			}
+			button {
+				width: 100px;
+				height: 30px;
+				border: 3px solid white;
+				border-radius: 50px;
+				background: #202020;
+				color: white;
+				cursor: pointer;
+				outline: none;
+			}
+			#stopwatch {
+				font-size: 75px;
+			  	text-align: center;
+			 	border: 2px solid black;
+			  	border-radius: 20px;
+			}
+			.buttons li {
+				display: inline;
+			}
+			#some_div{
+				font-size: 75px;
+			  	text-align: center;
+			 	border: 2px solid black;
+			  	border-radius: 20px;
+			}
+		</style>
+		<title>Time</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="static/assets_home/css/main.css" />
+		<noscript><link rel="stylesheet" href="static/assets_home/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="logo">
+							<span class="icon fa-gem"></span>
+						</div>
+						<div class="content">
+							<div class="inner">
+								<h1>TIME</h1>
+								<p>too slow for those who wait, <br/>too swift for those who fear, <br/>too long for those who grieve, <br/>too short for those who rejoice, <br/>but for those who love, <br/>time is eternity.</p>
+							</div>
+						</div>
+						<nav>
+							<ul>
+								<li><a href={{url_for('front')}}>Go Back</a></li>
+								<li><a href="#work">Ticker</a></li>
+								<li><a href="#about">Timer</a></li>
+								<li><a href={{url_for('tasks')}}>Tasks</a></li>
+								<!--<li><a href="#elements">Elements</a></li>-->
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+						<!-- Work -->
+							<article id="work">
+								<h2 class="major">Ticker</h2>
+								<span class="image main" id="stopwatch">00:00:00</span>
+								<ul style="display: table; margin: 0 100px;" class="buttons">
+									<li><button onclick="startTicker()">Start</button></li>
+									<li><button onclick="stopTicker()">Stop</button></li>
+									<li><button onclick="resetTicker()">Reset</button></li>
+								</ul>
+							</article>
+
+						<!-- About -->
+							<article id="about">
+								<h2 class="major">Timer</h2>
+								<span class="image main" id="some_div">00:30:00</span>
+								<ul class="buttons">
+									<li><button onclick="start_timer()">Start</button></li>
+								</ul>
+							</article>
+					</div>
+			</div>
+
+		<!-- BG -->
+			<div id="bg"></div>
+
+		<!-- Scripts -->
+		<script>
+			const Ticker = document.getElementById('stopwatch');
+
+			var hr = 0;
+			var min = 0;
+			var sec = 0;
+			var stoptime = true;
+
+			function startTicker() {
+			  if (stoptime == true) {
+					stoptime = false;
+					TickerCycle();
+				}
+			}
+			function stopTicker() {
+			  if (stoptime == false) {
+				stoptime = true;
+			  }
+			}
+
+			function TickerCycle() {
+				if (stoptime == false) {
+				sec = parseInt(sec);
+				min = parseInt(min);
+				hr = parseInt(hr);
+
+				sec = sec + 1;
+
+				if (sec == 60) {
+				  min = min + 1;
+				  sec = 0;
+				}
+				if (min == 60) {
+				  hr = hr + 1;
+				  min = 0;
+				  sec = 0;
+				}
+
+				if (sec < 10 || sec == 0) {
+				  sec = '0' + sec;
+				}
+				if (min < 10 || min == 0) {
+				  min = '0' + min;
+				}
+				if (hr < 10 || hr == 0) {
+				  hr = '0' + hr;
+				}
+
+				Ticker.innerHTML = hr + ':' + min + ':' + sec;
+
+				setTimeout("TickerCycle()", 1000);
+			  }
+			}
+
+			function resetTicker() {
+				Ticker.innerHTML = '00:00:00';
+			}
+    	</script>
+		<script>
+		function start_timer(){
+			var countdown = 30 * 60 * 1000;
+		var timerId = setInterval(function(){
+		  countdown -= 1000;
+		  var min = Math.floor(countdown / (60 * 1000));
+		  //var sec = Math.floor(countdown - (min * 60 * 1000));  // wrong
+		  var sec = Math.floor((countdown - (min * 60 * 1000)) / 1000);  //correct
+
+		  if (countdown <= 0) {
+			 alert("30 min!");
+			 clearInterval(timerId);
+			 //doSomething();
+		  } else {
+			 $("#some_div").html(min + " : " + sec);
+		  }
+
+		}, 1000); //1000ms. = 1sec.
+		}
+		</script>
+		<script src="static/assets_home/js/jquery.min.js"></script>
+		<script src="static/assets_home/js/browser.min.js"></script>
+		<script src="static/assets_home/js/breakpoints.min.js"></script>
+		<script src="static/assets_home/js/util.js"></script>
+		<script src="static/assets_home/js/main.js"></script>
+	</body>
+</html>
